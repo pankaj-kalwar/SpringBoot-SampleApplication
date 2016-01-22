@@ -1,0 +1,46 @@
+/*
+* @author : Pankaj Kalwar
+* @since : 	22-Jan-2016	
+*/
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+buildscript {
+    repositories {
+        //mavenCentral()
+		 maven  {
+			url "http://repo1.maven.org/maven2"
+		}
+		
+		//jcenter()
+		jcenter {
+			url "http://jcenter.bintray.com/"
+		}
+    }
+    dependencies {
+        classpath(
+                'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.0.2'
+        )
+    }
+}
+
+repositories {
+    //mavenCentral()
+	 maven  {
+		url "http://repo1.maven.org/maven2"
+	}
+	
+	//jcenter()
+	jcenter {
+		url "http://jcenter.bintray.com/"
+	}
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.13'
+}
