@@ -1,0 +1,55 @@
+#====== Spring properties, Data Source & JPA ============
+spring:
+  application:
+    name: auth-server  # Identify this application
+  #profiles: client
+  datasource:
+    dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+    url: jdbc:h2:tcp://localhost/~/myAuth2
+    schema: classpath:/schema.sql
+    data: classpath:/data.sql
+    continueOnError: true	#prevent for error 
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  
+
+#===========================================================
+  
+#spring.jpa.hibernate.ddl-auto=create-drop
+#spring.datasource.continueOnError=true
+
+#driverClassName: org.h2.jdbcx.JdbcDataSource
+#spring.datasource.driverClassName=com.mysql.jdbc.Driver
+
+# Map the error path to error template (for Thymeleaf)
+#error:
+#  path=/error
+
+# ============ Discovery Server Access ================
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value}}}
+    preferIpAddress: true  
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    # Default values comes from org.springframework.cloud.netflix.eurek.EurekaClientConfigBean
+    registryFetchIntervalSeconds: 1
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 1
+
+#management:
+#  context_path: /admin
+
+
+#========= server port ===========
+server:
+  port: 0
+  
+ 
+#========= For OAuth Default Security =========== 
+security:
+  user:
+    name: admin
+    password: password

@@ -1,0 +1,16 @@
+# Spring properties
+spring:
+  application:
+    name: angular-web  # Identify this application
+  
+# Map the error path to error template (for Thymeleaf)
+error:
+  path=/error
+
+# Discovery Server Access
+      
+
+
+# HTTP Server
+server:
+  port: 5050   # HTTP (Tomcat) port
